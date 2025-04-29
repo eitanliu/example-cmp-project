@@ -28,3 +28,6 @@ Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-mu
 [Maven Repository: org.jetbrains.compose » org.jetbrains.compose.gradle.plugin](https://mvnrepository.com/artifact/org.jetbrains.compose/org.jetbrains.compose.gradle.plugin)
 
 [Kotlin/KMP-App-Template-Native](https://github.com/Kotlin/KMP-App-Template-Native)
+
+kotlin coroutines posix
+[Support for runInterruptible in Kotlin/Native (POSIX) targets](https://github.com/Kotlin/kotlinx.coroutines/issues/3563)
