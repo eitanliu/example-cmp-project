@@ -32,3 +32,5 @@ Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-mu
 
 kotlin coroutines posix
 [Support for runInterruptible in Kotlin/Native (POSIX) targets](https://github.com/Kotlin/kotlinx.coroutines/issues/3563)
+[Kotlin/Native as a dynamic library — tutorial](https://medium.com/@bppleman/kotlin-native-as-a-dynamic-library-tutorial-c1b844a401bc)
+[Kotlin/Native Immediate-Mode-UI/Nuklear]((https://gist.github.com/RageshAntony/d25232763682d2a15acbabaa1cca08bc)

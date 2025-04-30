@@ -44,7 +44,16 @@ kotlin {
         os.isMacOsX -> if (isArm64) macosArm64() else macosX64()
         else -> null //throw GradleException("Host OS is not supported in Kotlin/Native.")
     }?.also { nativeTarget ->
+        nativeTarget.compilations.getByName("main") {
+            cinterops {
+                val prime by creating {
+                    defFile(project.file("src/nativeInterop/cinterop/prime.def"))
+                    compilerOpts("-Isrc/nativeInterop/cinterop")
+                }
+            }
+        }
         nativeTarget.binaries {
+
             executable {
                 entryPoint = "org.example.kmp.all.main"
             }
@@ -84,6 +93,11 @@ kotlin {
             implementation(libs.kotlinx.coroutines.swing)
         }
         if (macosEnable) macosMain.dependencies {
+        }
+
+        all {
+            languageSettings.optIn("kotlinx.cinterop.ExperimentalForeignApi")
+            languageSettings.optIn("kotlin.experimental.ExperimentalNativeApi")
         }
     }
 }
