@@ -18,7 +18,7 @@ private val isArm64 get() = arch == "aarch64"
 val androidEnable = true
 val iosEnable get() = os.isMacOsX //|| true
 val desktopEnable = true
-val nativeEnable = true
+val macosEnable = os.isMacOsX
 
 kotlin {
 
@@ -40,10 +40,8 @@ kotlin {
 
     if (desktopEnable) jvm("desktop")
 
-    val osNativeTarget = if (nativeEnable) when {
-        os.isMacOsX -> if (isArm64) macosArm64("osNative") else macosX64("osNative")
-        os.isLinux -> if (isArm64) linuxArm64("osNative") else linuxX64("osNative")
-        os.isWindows -> mingwX64("osNative")
+    if (macosEnable) when {
+        os.isMacOsX -> if (isArm64) macosArm64() else macosX64()
         else -> null //throw GradleException("Host OS is not supported in Kotlin/Native.")
     }?.also { nativeTarget ->
         nativeTarget.binaries {
@@ -85,7 +83,7 @@ kotlin {
             implementation(compose.desktop.currentOs)
             implementation(libs.kotlinx.coroutines.swing)
         }
-        if (nativeEnable && osNativeTarget != null) getByName("osNativeMain").dependencies {
+        if (macosEnable) macosMain.dependencies {
         }
     }
 }
