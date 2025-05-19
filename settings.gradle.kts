@@ -1,4 +1,5 @@
-rootProject.name = "CMPProject"
+@file:Suppress("UnstableApiUsage")
+
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {
@@ -28,4 +29,5 @@ dependencyResolutionManagement {
     }
 }
 
+rootProject.name = "cmp-project"
 include(":composeApp")
